@@ -12,8 +12,8 @@ variables:
   # Container registry service connection established during pipeline creation
   appName: thaint-flask
   dockerRegistryServiceConnection: '26ae007a-cf1f-4dd1-8c31-aec473f934f7'
-  imageRepository: 'thaintmsdocspythonflaskwebappquickstart'
-  containerRegistry: 'registrythaint.azurecr.io'
+  imageRepository: 'flask-demo'
+  containerRegistry: 'ca8fd509698dacr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -39,9 +39,9 @@ stages:
         tags: |
           $(tag)
 
-    - task: AzureWebAppContainer@1
-      displayName: 'Azure Web App on Container Deploy'
-      inputs:
-        azureSubscription: 'Azure subscription 1(f19c1889-00ca-4e96-8da9-fd52606a5417)'
-        appName: '$(appName)'
-        containers: '$(containerRegistry)/$(imageRepository):$(tag)'
+    # - task: AzureWebAppContainer@1
+    #   displayName: 'Azure Web App on Container Deploy'
+    #   inputs:
+    #     azureSubscription: 'Azure subscription 1(f19c1889-00ca-4e96-8da9-fd52606a5417)'
+    #     appName: '$(appName)'
+    #     containers: '$(containerRegistry)/$(imageRepository):$(tag)'
